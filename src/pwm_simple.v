@@ -19,7 +19,7 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-module pwm_simple (output wire pwm, input clk, [2:0] trigger, dc);
+module pwm_simple (output wire pwm, input clk, input [2:0] trigger, input [2:0] dc);
     
     wire set, reset, reset_tmp;
     wire is0, s_setup, r_setup;

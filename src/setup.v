@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module setup(input s, r, is0, output reg s_setup, r_setup);
+module setup(input s, r, is0, output reg s_setup, output reg r_setup);
 always @(*) begin
 if (is0 == 1)
     begin
