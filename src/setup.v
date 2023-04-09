@@ -21,7 +21,7 @@
 
 
 module setup(input s, r, is0, output reg s_setup, r_setup);
-always @(s, r, is0) begin
+always @(*) begin
 if (is0 == 1)
     begin
         s_setup <= 0;

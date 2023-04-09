@@ -21,7 +21,7 @@
 
 
 module store(input rst, clk, current, [2:0] trigger, output reg [2:0] dc_control);
-    always @(posedge clk, rst) begin
+    always @(posedge clk || rst) begin
         if (rst == 1) begin
             dc_control <= 0;
         end

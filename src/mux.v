@@ -22,7 +22,7 @@
 
 module mux(output reg out, input a, b, sel);
 
-always @(sel, a, b) begin
+always @(*) begin
   case(sel)
     1'b0: out <= a;
     1'b1: out <= b;

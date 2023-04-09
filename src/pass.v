@@ -21,7 +21,7 @@
 
 
 module pass(input x, y, output reg f);
-always @(x,y) begin
+always @(*) begin
     f <= ~x && y;
 end
 endmodule

@@ -3,7 +3,7 @@ module sr_latch (input S, input R, output Q);
   reg Q_reg;
   //reg Qn_reg;
 
-  always @(S, R) begin
+  always @(*) begin
     if (S && ~R) begin
       Q_reg <= 1'b1;
       //Qn_reg <= 1'b0;
