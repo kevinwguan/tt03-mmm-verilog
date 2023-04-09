@@ -20,17 +20,17 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module kevinwguan_tiny_tapeout(input i0, i1, rst, output lpwm, rpwm);
+module kevinwguan_tiny_tapeout(input [7:0] io_in, output [7:0] io_out);
     wire clk_out;
     wire left, right;
     wire [2:0] lcontrol, rcontrol;
     wire [2:0] trigger;
     
-    osc osc_inst(rst, clk_out);
-    counter counter_inst(rst, clk_out, trigger);
-    fsm fsm_inst(i0, i1, clk_out, left, right);
-    store store_left(rst, clk_out, left, trigger, lcontrol);
-    store store_right(rst, clk_out, right, trigger, rcontrol);
-    pwm_simple pwm_simple_linst(lpwm, clk_out, trigger, lcontrol);
-    pwm_simple pwm_simple_rinst(rpwm, clk_out, trigger, rcontrol);
+    osc osc_inst(io_in[2], clk_out);
+    counter counter_inst(io_in[2], clk_out, trigger);
+    fsm fsm_inst(io_in[0], io_in[1], clk_out, left, right);
+    store store_left(io_in[2], clk_out, left, trigger, lcontrol);
+    store store_right(io_in[2], clk_out, right, trigger, rcontrol);
+    pwm_simple pwm_simple_linst(io_out[0], clk_out, trigger, lcontrol);
+    pwm_simple pwm_simple_rinst(io_out[1], clk_out, trigger, rcontrol);
 endmodule
