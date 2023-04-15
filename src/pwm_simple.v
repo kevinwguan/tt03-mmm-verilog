@@ -32,7 +32,7 @@ module pwm_simple (output wire pwm, input rst, clk, input [2:0] trigger, input [
     // 2
     comparator cmp1(.a(3'b0), .b(trigger), .equal(setd));
     dff_cell ffe(.clk(clk), .d(setd), .q(set));
-    dffsr_cell sr_inst(.s(s_setup), .r(r_setup), .q(pwm_pass));
+    sr_latch sr_inst(.S(s_setup), .R(r_setup), .Q(pwm_pass));
     pass pass_rst(.x(rst), .y(pwm_pass), .f(pwm));
     
     // 3
