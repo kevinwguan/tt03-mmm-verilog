@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module dc_control(input rst, clk, motor, [2:0] duty, [2:0] counter, output reg [2:0] dc);
+module dc_control(input rst, clk, motor, input [2:0] duty, input [2:0] counter, output reg [2:0] dc);
     reg [2:0] store;
     always @(posedge clk or posedge rst) begin
         if (rst == 1) begin
