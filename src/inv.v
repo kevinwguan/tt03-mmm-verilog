@@ -25,6 +25,6 @@ module inv(
     output reg out
     );
     always @(in) begin
-        #2 out <= !in;
+        #4000 out <= !in;
     end
 endmodule

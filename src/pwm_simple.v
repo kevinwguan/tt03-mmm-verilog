@@ -19,11 +19,11 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-module pwm_simple (output wire pwm, input clk, input [2:0] trigger, input [2:0] dc);
+module pwm_simple (output wire pwm, input rst, clk, input [2:0] trigger, input [2:0] dc);
     
     wire set, reset, reset_tmp;
     wire is0, s_setup, r_setup;
-    wire setd, clrd;
+    wire setd, clrd, pwm_pass;
     //wire [2:0] cnt;    
     
     // 1
@@ -31,12 +31,13 @@ module pwm_simple (output wire pwm, input clk, input [2:0] trigger, input [2:0] 
     
     // 2
     comparator cmp1(.a(3'b0), .b(trigger), .equal(setd));
-    dff ffe(.clk(clk), .d(setd), .q(set));
-    sr_latch sr_inst(.S(s_setup), .R(r_setup), .Q(pwm));
+    dff_cell ffe(.clk(clk), .d(setd), .q(set));
+    dffsr_cell sr_inst(.s(s_setup), .r(r_setup), .q(pwm_pass));
+    pass pass_rst(.x(rst), .y(pwm_pass), .f(pwm));
     
     // 3
     comparator cmp2(.a(trigger), .b(dc), .equal(clrd));
-    dff ff0(.clk(clk), .d(clrd), .q(reset_tmp));
+    dff_cell ff0(.clk(clk), .d(clrd), .q(reset_tmp));
     
     // 4
     comparator cmp3(.a(3'b0), .b(dc), .equal(is0));

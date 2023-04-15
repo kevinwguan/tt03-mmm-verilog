@@ -1,5 +1,5 @@
-module counter (input rst, input clk, output reg [2:0] count);
-   always @(posedge clk || rst) begin
+module counter (input rst, clk, output reg [2:0] count);
+   always @(posedge clk or posedge rst) begin
       if (rst == 1)
           begin
               count <= 0;
@@ -10,4 +10,3 @@ module counter (input rst, input clk, output reg [2:0] count);
           end
    end
 endmodule
-
