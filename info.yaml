@@ -9,17 +9,14 @@ project:
     - cells.v
     - comparator.v
     - counter.v
-    - dff.v
+    - dc_control.v
     - fsm.v
     - fsm_unit.v
     - inv.v
-    - mux.v
     - osc.v
     - pass.v
     - pwm_simple.v
     - setup.v
-    - srff.v
-    - store.v
     - tiny_tapeout.v
   top_module:  "kevinwguan_tiny_tapeout"      # put the name of your top module here, make it unique by prepending your github username
 
