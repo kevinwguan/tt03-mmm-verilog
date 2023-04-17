@@ -22,7 +22,7 @@
 
 //module kevinwguan_tiny_tapeout(input i0, i1, rst, output lpwm, rpwm);
 module kevinwguan_tiny_tapeout(input [7:0] io_in, output [7:0] io_out);
-    wire clk_int;
+    wire clk_int, clk_out;
     wire left, right;
     wire [2:0] lcontrol, rcontrol;
     wire [2:0] trigger;
