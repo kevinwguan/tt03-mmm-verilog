@@ -20,13 +20,12 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module fsm_unit(input and11, and12, and21, and22, and31, and32, output or2out);
-    wire tmp1, tmp2, tmp3;
+module fsm_unit(input and11, and12, and21, and22, or2in, output or2out);
+    wire tmp1, tmp2;
     wire or1out;
     and_cell and1(and11, and12, tmp1);
     and_cell and2(and21, and22, tmp2);
-    and_cell and3(and31, and32, tmp3);
     
     or_cell or1(tmp1, tmp2, or1out);
-    or_cell or2(or1out, tmp3, or2out);
+    or_cell or2(or1out, or2in, or2out);
 endmodule

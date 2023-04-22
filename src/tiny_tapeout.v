@@ -38,7 +38,7 @@ module kevinwguan_tiny_tapeout(input [7:0] io_in, output [7:0] io_out);
     buffer_cell buffer_rfsm(.in(right), .out(io_out[3]));
     buffer_cell buffer_lfsm(.in(left), .out(io_out[2]));
     
-    fsm fsm_inst(io_in[0], io_in[1], clk_out, right, left);
+    fsm fsm_inst(io_in[0], io_in[1], clk_out, io_in[7], right, left);
     //fsm fsm_dut(io_in[0], io_in[1], clk_out, io_out[3], io_out[2]);
     //store store_right(io_in[7], clk_out, right, io_in[2], trigger, rcontrol);
     //store store_left(io_in[7], clk_out, left, io_in[2], trigger, lcontrol);

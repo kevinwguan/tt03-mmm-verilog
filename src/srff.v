@@ -21,4 +21,22 @@ module sr_latch (input S, input R, output Q);
 
 endmodule
 
+module dff (
+    input wire rst,
+    input wire clk,
+    input wire d,
+    output reg q,
+    output wire notq
+    );
+
+    assign notq = !q;
+    always @(posedge clk or posedge rst)
+        if (rst == 1) begin
+            q <= 0;
+        end
+        else begin
+            q <= d;
+        end
+endmodule
+
 
